@@ -6,7 +6,7 @@ function Player:onBrowseField(position)
 end
 
 function Player:onLook(thing, position, distance)
-	local description = ""
+	local description = thing:getDescription(distance)
 	if hasEventCallback(EVENT_CALLBACK_ONLOOK) then
 		description = EventCallback(EVENT_CALLBACK_ONLOOK, self, thing, position, distance, description)
 	end

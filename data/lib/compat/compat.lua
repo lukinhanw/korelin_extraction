@@ -665,7 +665,6 @@ doPlayerSendTutorial = doSendTutorial
 function doAddMapMark(cid, pos, type, description) local p = Player(cid) return p and p:addMapMark(pos, type, description or "") or false end
 doPlayerAddMapMark = doAddMapMark
 function doPlayerSendTextMessage(cid, type, text, ...) local p = Player(cid) return p and p:sendTextMessage(type, text, ...) or false end
-function doSendAnimatedText() debugPrint("Deprecated function.") return true end
 function getPlayerAccountManager() debugPrint("Deprecated function.") return true end
 function doPlayerSetExperienceRate() debugPrint("Deprecated function, use Player:onGainExperience event instead.") return true end
 function doPlayerSetSkillLevel(cid, skillId, value, ...) local p = Player(cid) return p and p:addSkill(skillId, value, ...) end

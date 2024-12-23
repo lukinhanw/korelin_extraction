@@ -30,6 +30,7 @@
 	<action itemid="10511" script="tools/tool_gear.lua" />
 	<action itemid="10513" script="tools/tool_gear.lua" />
 	<action itemid="10515" script="tools/tool_gear.lua" />
+	<action itemid="4863" script="tools/water_pouch.lua" allowfaruse="1"/>
 
 	<!-- Transform and decay -->
 	<action fromid="1873" toid="1876" script="other/decayto.lua" />

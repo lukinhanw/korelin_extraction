@@ -8155,13 +8155,13 @@
 		<attribute key="decayTo" value="4861" />
 		<attribute key="duration" value="30" />
 	</item>
-	<item id="4863" article="an" name="ectoplasm container">
+	<item id="4863" article="an" name="water pouch">
 		<attribute key="description" value="It is empty." />
 		<attribute key="weight" value="600" />
 	</item>
-	<item id="4864" article="an" name="ectoplasm container">
-		<attribute key="description" value="It is filled with a desecrated bone." />
-		<attribute key="weight" value="600" />
+	<item id="4864" article="an" name="water pouch">
+		<attribute key="description" value="It is full." />
+		<attribute key="weight" value="1500" />
 	</item>
 	<item id="4865" article="a" name="butterfly conservation kit">
 		<attribute key="description" value="It is empty." />

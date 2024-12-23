@@ -4,7 +4,7 @@ combat:setParameter(COMBAT_PARAM_AGGRESSIVE, false)
 
 local speed = Condition(CONDITION_HASTE)
 speed:setParameter(CONDITION_PARAM_TICKS, 10000)
-speed:setFormula(0.8, -64, 0.8, -64)
+speed:setFormula(0.8, -72, 0.8, -72)
 combat:addCondition(speed)
 
 local cooldownAttackGroup = Condition(CONDITION_SPELLGROUPCOOLDOWN)
