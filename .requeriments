@@ -1,0 +1,115 @@
+Sistema de Atributos e Drops em Monsters
+
+1. Tipos de Atributos:
+
+A) Atributos de Status (Stats base do item):
+- Armor
+- Attack
+- Defense
+Obs: São os atributos nativos do item que recebem bônus baseado na raridade
+
+B) Atributos Especiais (Efeitos adicionais):
+- Health: Aumenta vida máxima do player (+30 a +150)
+- Speed: Aumenta velocidade do player (+5 a +30)
+- Power: Aumenta o dano causado em % (+3% a +15%)
+- Reflect: Reflete % do dano recebido (+2% a +10%)
+- Life Steal: Cura % do dano causado (+2% a +10%)
+- Protect: Chance % de bloquear dano recebido (+2% a +10%)
+
+2. Sistema de Baús:
+A) Tipos de Baús:
+- Common Chest (ID: 7621/7622)
+  * 1-3 itens por baú
+  * Chances: Common 90%, Rare 8%, Epic 2%, Legendary 0%
+  * Tempo de abertura: 3s
+
+- Rare Chest (ID: 7623/7624) 
+  * 2-4 itens por baú
+  * Chances: Common 45%, Rare 35%, Epic 15%, Legendary 5%
+  * Tempo de abertura: 8s
+
+- Special Chest (ID: 7625/7626)
+  * 1 item lendário garantido + 1-4 itens extras
+  * Chances extras: Common 20%, Rare 40%, Epic 30%, Legendary 10%
+  * Tempo de abertura: 15s
+
+B) Regras dos Baús:
+- Não pode abrir múltiplos baús ao mesmo tempo
+- Não pode se mover durante a abertura
+- Apenas um jogador pode abrir cada baú por vez
+- Baú some após ser aberto
+
+3. Sistema de Raridade:
+- Comum: Nome normal, sem bônus
+- Rare: "rare itemname", 1 atributo
+- Epic: "epic itemname", 1-3 atributos
+- Legendary: "legendary itemname", 2-4 atributos
+
+4. Multiplicadores por Raridade:
+- Comum: x1.0
+- Rare: x2.0 
+- Epic: x3.0
+- Legendary: x4.0
+
+5. Comandos de Teste:
+!createitem itemid/nome, [quantidade], [raridade], [atributo valor, ...]
+Exemplos:
+- !createitem 2160, 1, legendary, power 10, health 100
+- !createitem 2160, 1, epic, speed 50, protect 5
+
+6. Arquivos do Sistema:
+
+A) Scripts de Atributos:
+/data/creaturescripts/scripts/
+- damage_bonus.lua (Power)
+- reflect_damage.lua (Reflect)
+- life_steal.lua (Life Steal)
+- damage_protection.lua (Protect)
+- equipment_bonus.lua (Health/Speed)
+
+B) Sistema de Baús:
+/data/actions/scripts/chests/
+- common_chest.lua
+- rare_chest.lua  
+- special_chest.lua
+
+C) Configurações:
+/data/libs/systems/
+- attributes_config.lua
+
+8. Configuração de Atributos (attributes_config.lua):
+
+A) Estrutura Principal:
+- rarityMultipliers: Multiplicadores por raridade
+- possibleAttributes: Lista de atributos possíveis
+- attributeCount: Número de atributos por raridade
+
+B) Funções Disponíveis:
+- calculateValue(attributeName, baseValue, rarity): 
+  * Calcula valor final do atributo baseado na raridade
+  * Retorna: valor * multiplicador da raridade
+
+- getAvailableAttributes(): 
+  * Retorna lista de atributos disponíveis
+  * Usado para randomização de atributos
+
+C) Configuração de Atributos:
+{
+    name = "nome_do_atributo",
+    min = valor_minimo,
+    max = valor_maximo,
+    description = "descrição do atributo"
+}
+
+D) Exemplo de Uso:
+local config = AttributesConfig.getAvailableAttributes()
+local value = AttributesConfig.calculateValue("power", 10, "legendary")
+-- value será 40 (10 * 4.0 do multiplicador lendário)
+
+7. Registro de Eventos:
+Necessário registrar em:
+- creaturescripts.xml
+- movements.xml
+- actions.xml
+- monster.lua (onSpawn)
+- login.lua (players) 
